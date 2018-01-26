@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %} Information {% endblock %}
+
+{% block content %}
+<h1> Hello, {{ username }} </h1>
+<hr>
+<h2> Academic Information </h2>
+<table>
+    {% for key, value in academic.items %}
+    <tr>
+        <td> <b> {{ key }} </b> </td>
+        {% if key == "scholars" %}
+            <tabel>
+            {% for scholar in value %}
+                <tr>
+                    <td> {{ scholar.scholardate }} </td>
+                    <td> {{ scholar.scholarsemester }} </td>
+                    <td> {{ scholar.scholartypeid }} </td>
+                </tr>
+            {% endfor %}
+            </tabel>
+        {% else %}
+            <td> {{ value }} </td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+</table>
+<hr>
+<h2> Library Information </h2>
+<table>
+    {% for key, value in library.items %}
+    <tr>
+        <td> <b> {{ key }} </b> </td>
+        {% if key == "fine_set" %}
+            <tabel>
+            {% for val in value %}
+                <tr>
+                    <td> {{ val.description }} </td>
+                    <td> {{ val.amount }} </td>
+                </tr>
+            {% endfor %}
+            </tabel>
+        {% elif key == "loan_set" %}
+            <tabel>
+            {% for val in value %}
+                <tr>
+                    <td> {{ val.branchcode }} </td>
+                    <td> {{ val.title }} </td>
+                </tr>
+            {% endfor %}
+            </tabel>
+        {% else %}
+            <td> {{ value }} </td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
