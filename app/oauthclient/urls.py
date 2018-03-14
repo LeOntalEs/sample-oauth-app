@@ -18,6 +18,7 @@ from django.contrib import admin
 from app.views import *
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', consume),
     url(r'consume/', consume),
     url(r'callback/', callback  ),
 ]
